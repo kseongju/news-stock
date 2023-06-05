@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>뉴스 빅데이터 오피니언 분석을 통한 주가 예측</title>
+  </head>
+  <body>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
+    <script>
+        window.onload = function(){
+            Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-c.json', function (data) {
+                // Create the chart
+                Highcharts.stockChart('container', {
+                    rangeSelector: {
+                        selected: 1
+                    },
+
+                    title: {
+                        text: 'AAPL Stock Price'
+                    },
+
+                    series: [{
+                        name: 'AAPL',
+                        data: data,
+                        tooltip: {
+                            valueDecimals: 2
+                        }
+                    }]
+                });
+            });
+        }
+    </script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <div id="head">
+        <h1>삼성전자</h1>
+    </div>
+    <div id="contents">
+        <div class="nav">
+            <div class="stock">삼성전자</div>
+            <div class="stock">LG에너지솔루션</div>
+            <div class="stock">SK하이닉스</div>
+            <div class="stock">삼성바이오로직스</div>
+            <div class="stock">LG화학</div>
+            <div class="stock">삼성SDI</div>
+            <div class="stock">현대차</div>
+            <div class="stock">기아</div>
+            <div class="stock">NAVER</div>
+            <div class="stock">POSCO홀딩스</div>
+        </div>
+        <div class="content">
+            <div id="top">
+                <div id="container"></div>
+                <div>
+                    <div id="newslist">
+                        <div class="list">
+                            <div class="emotion">긍정기사</div>
+                            <div class="news">
+                                <div class="newstitle">
+                                    <a href="news" title="tdasdsadsadas">삼성전자 9만전자에 도달...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list">
+                            <div class="emotion">부정기사</div>
+                            <div class="news">
+                                <div class="newstitle">
+                                    <a href="news" title="tdasdsadsadas">삼성전자 적자...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="result">
+                        <div class="text">해당 종목은</div>
+                        <div id="result_text">상승</div>
+                        <div class="text">할 예정입니다.</div>
+                    </div>
+                </div>
+            </div>
+            <div id="bottom">
+                <div id="word" style="background-color:white;">
+                  <img src="{% static 'img/워드클라우드.png' %}" alt="왜 안나와" style="width:480px; height:400px">
+                </div>
+                <div id="wordnet" style="background-color:white;">
+                  <img src="{% static 'img/wordnet-.webp' %}" alt="왜 안나와" style="width:480px; height:400px">
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
